@@ -29,4 +29,11 @@ describe CalorieCounter do
     highest_sum = elf_list.highest_calorie_count('./elf_calories/test_calorie_list.txt')
     expect(highest_sum).to eq(24000)
   end
+
+  it 'can return the answer to the puzzle' do
+    elf_list = CalorieCounter.new
+    highest_sum = elf_list.highest_calorie_count('./elf_calories/calorie_list.txt')
+    binding.pry
+    expect(highest_sum).to eq(72718)
+  end
 end
