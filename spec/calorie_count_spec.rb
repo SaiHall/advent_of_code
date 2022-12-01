@@ -30,10 +30,22 @@ describe CalorieCounter do
     expect(highest_sum).to eq(24000)
   end
 
-  it 'can return the answer to the puzzle' do
+  it 'can give the sum of the top three calorie amounts' do
+    elf_list = CalorieCounter.new
+    top_three_total = elf_list.top_three_sum('./elf_calories/test_calorie_list.txt')
+    expect(top_three_total).to eq(45000)
+  end
+
+  # elf-87 babyyyy
+  it 'can return the answer to the first puzzle, highest single calorie amount' do
     elf_list = CalorieCounter.new
     highest_sum = elf_list.highest_calorie_count('./elf_calories/calorie_list.txt')
-    binding.pry
     expect(highest_sum).to eq(72718)
+  end
+
+  it 'can return the answer to the second puzzle, sum of top three amounts' do
+    elf_list = CalorieCounter.new
+    top_three_total = elf_list.top_three_sum('./elf_calories/calorie_list.txt')
+    expect(top_three_total).to eq(213089)
   end
 end
