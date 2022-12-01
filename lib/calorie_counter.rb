@@ -27,4 +27,10 @@ class CalorieCounter
     translate_list(file_loc)
     @breakdown.values.max
   end
+
+  def top_three_sum(file_loc)
+    translate_list(file_loc)
+    sorted = @breakdown.values.sort
+    sorted[-1] + sorted[-2] + sorted[-3]
+  end
 end
