@@ -19,6 +19,24 @@ describe RockPaperScissors do
     game.player_two_score_tally
     expect(game.player_two_score).to eq(15)
   end
+
+  it 'can tally player 2 score from bigger file' do
+    game = RockPaperScissors.new("./rock_paper_scissors/rps_pattern.txt")
+    game.player_two_score_tally
+    expect(game.player_two_score).to eq(8392)
+  end
+
+  it 'can tally with proper information' do
+    game = RockPaperScissors.new("./rock_paper_scissors/test_rps_pattern.txt")
+    game.player_two_proper_tally
+    expect(game.player_two_score).to eq(12)
+  end
+
+  it 'can tally with proper information, from bigger file' do
+    game = RockPaperScissors.new("./rock_paper_scissors/rps_pattern.txt")
+    game.player_two_proper_tally
+    expect(game.player_two_score).to eq(10116)
+  end
 end
 
 
