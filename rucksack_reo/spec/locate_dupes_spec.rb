@@ -27,4 +27,11 @@ describe RucksackReo do
     expect(dupes).to be_an(Array)
     expect(dupes).to eq(['p', 'L', 'P', 'v', 't', 's'])
   end
+
+  it 'can score the pulled duplicates' do
+    @bags.format_file(@test_file)
+    @bags.find_dupes
+    @bags.create_score_hash
+    expect(@bags.sum_dupes).to eq(157)
+  end
 end

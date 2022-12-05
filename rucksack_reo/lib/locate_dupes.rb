@@ -6,6 +6,7 @@ class RucksackReo
   def initialize
     @duplicates = []
     @formatted_list = []
+    @score_hash = {}
   end
 
   def read_file_in(file_loc)
@@ -31,5 +32,26 @@ class RucksackReo
       @duplicates.push(a[0].intersection(a[1]))
     end
     @duplicates = @duplicates.flatten
+  end
+
+  def create_score_hash
+    score_hash = {}
+    n = 0
+    ("a".."z").each do |letter|
+      n += 1
+      @score_hash["#{letter}"] = n
+    end
+    ("A".."Z").each do |letter|
+      n += 1
+      @score_hash["#{letter}"] = n
+    end
+  end
+
+  def sum_dupes
+    total = 0
+    @duplicates.each do |letter|
+     total += @score_hash["#{letter}"]
+    end
+    total
   end
 end
