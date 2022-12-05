@@ -19,4 +19,12 @@ describe RucksackReo do
     expect(formatted_file_data).to be_an(Array)
     expect(formatted_file_data[1]).to be_an(Array)
   end
+
+  it 'can locate the duplicates between rucksack pairs' do
+    @bags.format_file(@test_file)
+    @bags.find_dupes
+    dupes = @bags.duplicates
+    expect(dupes).to be_an(Array)
+    expect(dupes).to eq(['p', 'L', 'P', 'v', 't', 's'])
+  end
 end
