@@ -47,4 +47,14 @@ describe RangeChecker do
     expect(@checker.overlapping?(b)).to eq(false)
     expect(@checker.overlapping?(c)).to eq(true)
   end
+
+  it 'can sum all cases where any overlap has occured' do
+    @checker.format_pair_list(@test)
+    expect(@checker.sum_overlap).to eq(4)
+  end
+
+  it 'can give the sum of cases where any overlap has occured in challenge file' do
+    @checker.format_pair_list(@file)
+    expect(@checker.sum_overlap).to eq(956)
+  end
 end

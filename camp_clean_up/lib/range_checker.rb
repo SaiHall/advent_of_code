@@ -41,4 +41,12 @@ class RangeChecker
     x = array[0].intersection(array[1])
     !x.empty?
   end
+
+  def sum_overlap
+    count = 0
+    @pair_list.each do |pair|
+      count += 1 if overlapping?(pair)
+    end
+    count
+  end
 end
