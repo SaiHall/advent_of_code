@@ -33,4 +33,10 @@ class SupplyStack
   def end_phrase
     @stacks.collect { |stack| stack[-1] }.join
   end
+
+  def execute_cm9001_directions
+    @directions.each do |direct|
+      @stacks[direct[:end]].push(@stacks[direct[:start]].pop(direct[:amount])).flatten!
+    end
+  end
 end

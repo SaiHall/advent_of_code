@@ -42,4 +42,23 @@ describe SupplyStack do
     @challenge.execute_directions
     expect(@challenge.end_phrase).to eq("SHQWSRBDL")
   end
+
+  it 'can execute directions for cm9001' do
+    projected = [%w(M), %w(C), %w(P Z N D)]
+    @tester.get_directions(@test_direct)
+    @tester.execute_cm9001_directions
+    expect(@tester.stacks).to eq(projected)
+  end
+
+  it 'can get the end phrase after cm9001 directions are executed' do
+    @tester.get_directions(@test_direct)
+    @tester.execute_cm9001_directions
+    expect(@tester.end_phrase).to eq("MCD")
+  end
+
+  it 'can get end phrase for challenge directions for cm9001' do
+    @challenge.get_directions(@chall_direct)
+    @challenge.execute_cm9001_directions
+    expect(@challenge.end_phrase).to eq("CDTQZHBRS")
+  end
 end
