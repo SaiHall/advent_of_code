@@ -17,4 +17,10 @@ describe SupplyStack do
     expect(@tester.stacks).to be_an(Array)
     expect(@tester.stacks[0]).to be_an(Array)
   end
+
+  it 'can get directions' do
+    @tester.get_directions(@test_direct)
+    expect(@tester.directions).to be_an(Array)
+    expect(@tester.directions[0]).to be_a(Hash)
+  end
 end
