@@ -36,4 +36,9 @@ class RangeChecker
     end
     count
   end
+
+  def overlapping?(array)
+    x = array[0].intersection(array[1])
+    !x.empty?
+  end
 end
