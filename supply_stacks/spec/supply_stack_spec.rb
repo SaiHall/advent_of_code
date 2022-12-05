@@ -30,4 +30,16 @@ describe SupplyStack do
     @tester.execute_directions
     expect(@tester.stacks).to eq(projected)
   end
+
+  it 'can return the "top" of each stack after executing directions as a string' do
+    @tester.get_directions(@test_direct)
+    @tester.execute_directions
+    expect(@tester.end_phrase).to eq("CMZ")
+  end
+
+  it 'can get the end phrase for challenge stacks' do
+    @challenge.get_directions(@chall_direct)
+    @challenge.execute_directions
+    expect(@challenge.end_phrase).to eq("SHQWSRBDL")
+  end
 end

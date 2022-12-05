@@ -29,4 +29,8 @@ class SupplyStack
       end
     end
   end
+
+  def end_phrase
+    @stacks.collect { |stack| stack[-1] }.join
+  end
 end
