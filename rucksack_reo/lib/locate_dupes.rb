@@ -54,4 +54,25 @@ class RucksackReo
     end
     total
   end
+
+  def format_elves(file_loc)
+    array = read_file_in(file_loc)
+    spread = array.map do |e|
+      e.chars
+    end
+  end
+
+  def find_elf_dupes(file_loc)
+    start_num = 0
+    end_num = 2
+    @duplicates = []
+    x = format_elves(file_loc)
+    until end_num > x.length do
+      y = x[start_num].intersection(x[start_num + 1], x[end_num])
+      @duplicates << y
+      start_num += 3
+      end_num += 3
+    end
+    @duplicates.flatten!
+  end
 end
