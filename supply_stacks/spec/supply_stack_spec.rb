@@ -23,4 +23,11 @@ describe SupplyStack do
     expect(@tester.directions).to be_an(Array)
     expect(@tester.directions[0]).to be_a(Hash)
   end
+
+  it 'can execute directions' do
+    projected = [%w(C), %w(M), %w(P D N Z)]
+    @tester.get_directions(@test_direct)
+    @tester.execute_directions
+    expect(@tester.stacks).to eq(projected)
+  end
 end

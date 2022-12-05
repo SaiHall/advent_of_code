@@ -21,4 +21,12 @@ class SupplyStack
       @directions << {amount: (x[1].to_i), start: ((x[3].to_i) - 1), end: ((x[5].to_i) - 1)}
     end
   end
+
+  def execute_directions
+    @directions.each do |direct|
+      (direct[:amount]).times do
+       @stacks[direct[:end]].push(@stacks[(direct[:start])].pop)
+      end
+    end
+  end
 end
