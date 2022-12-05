@@ -8,7 +8,8 @@ class RangeChecker
   end
 
   def contained?(array)
-    array[0].include?(array[1]) || array[1].include?(array[0])
+    x = array[0].intersection(array[1])
+    x == array[0] || x == array[1]
   end
 
   def populate_pairs(file_loc)
@@ -22,8 +23,17 @@ class RangeChecker
     populate_pairs(file_loc)
     @pair_list = @pair_list.map do |e|
       e.split(',').map do |f|
-        ((f[0].to_i)..(f[2].to_i)).to_a.join
+        ff = f.split('-')
+        ((ff[0].to_i)..(ff[1].to_i)).to_a
       end
     end
+  end
+
+  def sum_tot_overlap
+    count = 0
+    @pair_list.each do |pair|
+      count += 1 if contained?(pair)
+    end
+    count
   end
 end

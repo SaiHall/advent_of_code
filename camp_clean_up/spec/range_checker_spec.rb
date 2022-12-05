@@ -13,9 +13,9 @@ describe RangeChecker do
   end
 
   it 'can determine if one range fully contains another' do
-    a = ["1234", "23"]
-    b = ["1234", "5678"]
-    c = ["123456", "5678"]
+    a = [[1, 2, 3, 4], [1, 2]]
+    b = [[1, 2, 3, 4], [5, 6, 7,8]]
+    c = [[1, 2, 3, 4, 5, 6], [5, 6, 7, 8]]
 
     expect(@checker.contained?(a)).to eq(true)
     expect(@checker.contained?(b)).to eq(false)
@@ -24,8 +24,19 @@ describe RangeChecker do
 
   it 'can read and format txt file' do
     @checker.format_pair_list(@test)
+    # binding.pry
     expect(@checker.pair_list).to be_an(Array)
     expect(@checker.pair_list[0]).to be_an(Array)
-    expect(@checker.pair_list[0][1]).to be_a(String)
+    expect(@checker.pair_list[0][1]).to be_an(Array)
+  end
+
+  it 'can sum amount of total overlaps in a given file' do
+    @checker.format_pair_list(@test)
+    expect(@checker.sum_tot_overlap).to eq(2)
+  end
+
+  it 'can give the sum for the challenge file' do
+    @checker.format_pair_list(@file)
+    expect(@checker.sum_tot_overlap).to eq(651) 
   end
 end
