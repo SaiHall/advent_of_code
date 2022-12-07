@@ -28,4 +28,16 @@ describe DataStreamDecoder do
 
     expect(@decoder.attempt_char_count).to eq(1953)
   end
+
+  it 'can return processed chars before SOM marker is found' do
+    @decoder.read_signal('./tuning_trouble/message_marker_test.txt')
+
+    expect(@decoder.attempt_char_count_message).to eq(29)
+  end
+
+  it 'can return processed chars before SOM marker is found' do
+    @decoder.read_signal('./tuning_trouble/data_stream_buffer.txt')
+
+    expect(@decoder.attempt_char_count_message).to eq(2301)
+  end
 end
