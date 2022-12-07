@@ -13,4 +13,12 @@ class DataStreamDecoder
     file.close
     @stream = file_data.chars
   end
+
+  def attempt_char_count
+    count = 4
+    @stream.each_cons(4) do |block|
+      count += 1 if block.uniq.length != 4
+      return count if block.uniq.length == 4
+    end
+  end
 end
